@@ -112,7 +112,23 @@ const Home: NextPage = () => {
           </button>
         </div>
       </div>
-      <div className="bg-white p-10 rounded-2xl shadow-2xl"></div>
+      <div className="bg-white p-10 rounded-2xl shadow-2xl">
+        <form className="flex flex-col space-y-2 p-2 bg-blue-500 focus-within:bg-blue-300">
+          <input
+            type="text"
+            placeholder="ID"
+            required
+            className="placeholder:text-red-300 placeholder-shown:border-red-500 focus:outline-blue-300"
+          />
+          <input
+            type="password"
+            placeholder="PASSWORD"
+            disabled
+            className="disabled:opacity-0"
+          />
+          <input type="submit" value="Login" />
+        </form>
+      </div>
     </div>
   );
 };
