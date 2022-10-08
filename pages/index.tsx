@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 const Home: NextPage = () => {
   return (
     <div className="bg-slate-400 py-32 px-5 grid gap-5 font-sans min-h-screen">
-      <div className="bg-white p-6 rounded-3xl shadow-2xl max-w-xs">
+      <div className="bg-white p-6 rounded-3xl shadow-2xl max-w-sm">
         <div className="font-semibold text-2xl mb-2">Select Item</div>
         <div className="flex justify-between my-1">
           <span className="text-gray-400">Grey Chair</span>
@@ -17,9 +17,11 @@ const Home: NextPage = () => {
           <span className="font-semibold">Total</span>
           <span className="font-semibold">$970</span>
         </div>
-        <button className="border-none bg-blue-500 text-white text-xl p-3 text-center rounded-xl w-2/3 mx-auto mt-3 hover:bg-violet-600 active:bg-pink-300 focus:text-cyan-800">
-          Checkout
-        </button>
+        <div className="flex">
+          <button className="border-none bg-blue-500 text-white text-xl p-3 text-center rounded-xl w-2/3 mx-auto mt-3 hover:bg-violet-600 active:bg-pink-300 focus:text-cyan-800">
+            Checkout
+          </button>
+        </div>
       </div>
       <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-sm">
         <div className="bg-blue-500 text-white font-semibold text-2xl p-5 pb-20 rounded-2xl ">
@@ -43,7 +45,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white p-10 rounded-2xl shadow-2xl max-w-xs">
+      <div className="bg-white p-10 rounded-2xl shadow-2xl max-w-sm">
         <div className="flex justify-between items-center">
           <span className="text-4xl relative -left-4">⬅️</span>
           <div className="flex items-center">
@@ -58,9 +60,9 @@ const Home: NextPage = () => {
         </div>
         <div className="flex justify-between items-center mt-2 mb-5">
           <div className="space-x-2">
-            <button className="bg-yellow-300 rounded-full border-none w-5 h-5"></button>
-            <button className="bg-indigo-300 rounded-full border-none w-5 h-5"></button>
-            <button className="bg-lime-600 rounded-full border-none w-5 h-5"></button>
+            <button className="bg-yellow-300 rounded-full border-none w-5 h-5 focus:ring-2 ring-offset-2 ring-yellow-300"></button>
+            <button className="bg-indigo-300 rounded-full border-none w-5 h-5 focus:ring-2 ring-offset-2 ring-indigo-300"></button>
+            <button className="bg-lime-600 rounded-full border-none w-5 h-5 focus:ring-2 ring-offset-2 ring-lime-600"></button>
           </div>
           <div className="flex space-x-3 justify-between items-center">
             <div className="flex justify-center items-center bg-slate-200 aspect-square w-8 rounded-lg">
