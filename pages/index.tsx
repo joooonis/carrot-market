@@ -3,39 +3,8 @@ import type { NextPage } from 'next';
 const Home: NextPage = () => {
   return (
     <div className="bg-slate-400 py-32 px-5 grid gap-5 font-sans min-h-screen">
-      <div className="bg-white p-6 rounded-3xl shadow-2xl max-w-sm">
+      <div className="bg-white p-6 rounded-3xl shadow-2xl sm:bg-red-400 md:bg-teal-500 lg:bg-pink-500 xl:bg-yellow-500 2xl:bg-amber-500">
         <div className="font-semibold text-2xl mb-2">Select Item</div>
-        <div className="space-y-2">
-          <ul>
-            {[1, 2, 3, 4, 5].map((c, i) => (
-              <li key={i} className="first:bg-orange-500 last:bg-violet-500">
-                {c}
-              </li>
-            ))}
-          </ul>
-          <ul>
-            {[1, 2, 3, 4, 5].map((c, i) => (
-              <li key={i} className="odd:bg-orange-500 even:bg-violet-500">
-                {c}
-              </li>
-            ))}
-          </ul>
-          <ul>
-            {[1].map((c, i) => (
-              <li key={i} className="only:bg-orange-500">
-                {c}
-              </li>
-            ))}
-          </ul>
-          <ul>
-            {['1', '2', '3', ''].map((c, i) => (
-              <li key={i} className="bg-red-500 py-2 empty:hidden">
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
-
         <div className="flex justify-between my-1">
           <span className="text-gray-400">Grey Chair</span>
           <span className="font-semibold">$170</span>
@@ -49,7 +18,7 @@ const Home: NextPage = () => {
           <span className="font-semibold">$970</span>
         </div>
         <div className="flex">
-          <button className="border-none bg-blue-500 text-white text-xl p-3 text-center rounded-xl w-2/3 mx-auto mt-3 hover:bg-violet-600 active:bg-pink-300 focus:text-cyan-800">
+          <button className="border-none sm:hover:bg-red-800 bg-blue-500 text-white text-xl p-3 text-center rounded-xl w-2/3 mx-auto mt-3 hover:bg-violet-600 active:bg-pink-300 focus:text-cyan-800">
             Checkout
           </button>
         </div>
@@ -111,47 +80,6 @@ const Home: NextPage = () => {
             Add to cart
           </button>
         </div>
-      </div>
-      <div className="bg-white p-10 rounded-2xl shadow-2xl">
-        <form className="flex flex-col space-y-2 p-2 bg-blue-500 focus-within:bg-blue-300">
-          <input
-            type="text"
-            placeholder="ID"
-            required
-            className="placeholder:text-red-300 placeholder-shown:border-red-500 focus:outline-blue-300"
-          />
-          <input
-            type="password"
-            placeholder="PASSWORD"
-            disabled
-            className="disabled:opacity-0"
-          />
-          <input type="submit" value="Login" className="cursor-pointer" />
-        </form>
-      </div>
-      <div className="bg-white p-10 rounded-2xl shadow-2xl">
-        <form className="flex flex-col space-y-2 p-5 border-2 border-stone-600">
-          <input
-            type="text"
-            required
-            placeholder="Username"
-            className="border p-1 peer border-gray-400 rounded-md "
-          />
-          <span className="hidden peer-invalid:block peer-invalid:text-red-500">
-            This input is invalid
-          </span>
-          <span className="hidden peer-valid:block peer-valid:text-teal-500">
-            Awesome username
-          </span>
-          <span className="hidden peer-hover:block peer-hover:text-amber-500">
-            Hello
-          </span>
-          <input
-            type="submit"
-            value="Login"
-            className="bg-teal-500 text-white p-2 rounded-lg cursor-pointer"
-          />
-        </form>
       </div>
     </div>
   );
