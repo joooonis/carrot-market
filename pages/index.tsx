@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <div className="bg-slate-400 py-32 px-5 grid gap-5 font-sans min-h-screen">
-      <div className="bg-white p-6 rounded-3xl shadow-2xl sm:bg-red-400 md:bg-teal-500 lg:bg-pink-500 xl:bg-yellow-500 2xl:bg-amber-500">
+    <div className="bg-slate-400 py-32 px-5 grid gap-5 font-sans min-h-screen md:grid-cols-2 lg:grid-cols-3 lg:place-content-center">
+      <div className="bg-white p-6 rounded-3xl shadow-2xl flex flex-col justify-between lg:max-h-64">
         <div className="font-semibold text-2xl mb-2">Select Item</div>
         <div className="flex justify-between my-1">
           <span className="text-gray-400">Grey Chair</span>
@@ -23,8 +23,8 @@ const Home: NextPage = () => {
           </button>
         </div>
       </div>
-      <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-sm group">
-        <div className="bg-blue-500 text-white font-semibold text-2xl p-5 pb-20 rounded-2xl ">
+      <div className="bg-white rounded-2xl shadow-2xl overflow-hidden group lg:max-h-96">
+        <div className="portrait:bg-blue-500 landscape:bg-teal-500 text-white font-semibold text-2xl p-5 pb-20 lg:pb-32 rounded-2xl ">
           Profile
         </div>
         <div className="bg-white rounded-2xl relative -top-5 p-5">
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
               <span className="text-gray-500 text-sm">Orders</span>
               <span className="font-semibold text-base">340</span>
             </div>
-            <div className="bg-blue-300 w-24 h-24 rounded-full relative -top-16 group-hover:bg-yellow-800 transition-colors" />
+            <div className="bg-blue-300 w-24 h-24 lg:w-32 lg:h-32 rounded-full relative -top-16 lg:-top-20 group-hover:bg-yellow-800 transition-colors" />
             <div className="flex flex-col items-center space-y-1">
               <span className="text-gray-500 text-sm">Spent</span>
               <span className="font-semibold text-base">$2,310</span>
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white p-10 rounded-2xl shadow-2xl max-w-sm">
+      <div className="bg-white p-10 rounded-2xl shadow-2xl md:col-span-2 lg:col-span-1">
         <div className="flex justify-between items-center">
           <span className="text-4xl relative -left-4">⬅️</span>
           <div className="flex items-center">
