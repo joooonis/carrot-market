@@ -54,7 +54,7 @@ const Home: NextPage = () => {
           </button>
         </div>
       </div>
-      <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-sm">
+      <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-sm group">
         <div className="bg-blue-500 text-white font-semibold text-2xl p-5 pb-20 rounded-2xl ">
           Profile
         </div>
@@ -64,7 +64,7 @@ const Home: NextPage = () => {
               <span className="text-gray-500 text-sm">Orders</span>
               <span className="font-semibold text-base">340</span>
             </div>
-            <div className="bg-blue-300 w-24 h-24 rounded-full relative -top-16" />
+            <div className="bg-blue-300 w-24 h-24 rounded-full relative -top-16 group-hover:bg-yellow-800 transition-colors" />
             <div className="flex flex-col items-center space-y-1">
               <span className="text-gray-500 text-sm">Spent</span>
               <span className="font-semibold text-base">$2,310</span>
