@@ -81,6 +81,9 @@ const Home: NextPage = () => {
           </button>
         </div>
       </div>
+      <div className="dark:md:hover:bg-teal-400 bg-[url('/bgimg.jpg')]">
+        <h2 className="text-[91px] text-[#99090]">Hello</h2>
+      </div>
     </div>
   );
 };
