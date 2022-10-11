@@ -8,5 +8,5 @@ module.exports = {
     extend: {},
   },
   darkMode: 'class', // default : 'media'
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
