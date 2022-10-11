@@ -13,7 +13,7 @@ export default function Enter() {
   return (
     <div>
       <h3 className="text-4xl font-bold text-center py-12">Enter to Carrot</h3>
-      <div>
+      <div className="p-6">
         <div>
           <h5 className="text-gray-500 text-center pb-4">Enter using:</h5>
           <div className="grid grid-cols-2 border-b w-full mt-8">
@@ -41,17 +41,27 @@ export default function Enter() {
             </button>
           </div>
         </div>
-        <form>
-          <label>
+        <form className="flex flex-col mt-12">
+          <label className="text-sm font-medium text-gray-700">
             {method === 'email' ? 'Email address' : null}
             {method === 'phone' ? 'Phone number' : null}
           </label>
-          <div>
-            {method === 'email' ? <input type="email" required /> : null}
+          <div className="mt-1">
+            {method === 'email' ? (
+              <input
+                type="email"
+                className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                required
+              />
+            ) : null}
             {method === 'phone' ? (
-              <div>
+              <div className="w-full">
                 <span>+82</span>
-                <input type="number" required />
+                <input
+                  type="number"
+                  className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                  required
+                />
               </div>
             ) : null}
           </div>
