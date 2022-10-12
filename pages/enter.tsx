@@ -59,13 +59,13 @@ export default function Enter() {
                 <span>+82</span>
                 <input
                   type="number"
-                  className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                  className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none text-sm focus:ring-orange-500 focus:border-orange-500"
                   required
                 />
               </div>
             ) : null}
           </div>
-          <button>
+          <button className="bg-orange-500 px-4 py-2 shadow-sm rounded-md text-white mt-4 hover:bg-orange-600 border border-transparent  font-medium">
             {method === 'email' ? 'Get login link' : null}
             {method === 'phone' ? 'Get one-time password' : null}
           </button>
