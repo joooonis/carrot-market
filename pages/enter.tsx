@@ -15,7 +15,6 @@ export default function Enter() {
       <h3 className="text-4xl font-bold text-center py-12">Enter to Carrot</h3>
       <div className="p-6">
         <div>
-          <h5 className="text-gray-500 text-center pb-4">Enter using:</h5>
           <div className="grid grid-cols-2 border-b w-full mt-8">
             <button
               className={cls(
@@ -41,8 +40,8 @@ export default function Enter() {
             </button>
           </div>
         </div>
-        <form className="flex flex-col mt-12">
-          <label className="text-sm font-medium text-gray-700">
+        <form className="flex flex-col mt-4">
+          <label className="text-sm font-medium text-gray-600 mb-1">
             {method === 'email' ? 'Email address' : null}
             {method === 'phone' ? 'Phone number' : null}
           </label>
@@ -55,11 +54,13 @@ export default function Enter() {
               />
             ) : null}
             {method === 'phone' ? (
-              <div className="w-full">
-                <span>+82</span>
+              <div className="flex rounded-md shadow-sm">
+                <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 select-none text-sm">
+                  +82
+                </span>
                 <input
                   type="number"
-                  className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none text-sm focus:ring-orange-500 focus:border-orange-500"
+                  className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
                   required
                 />
               </div>
