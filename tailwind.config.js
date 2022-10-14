@@ -8,5 +8,8 @@ module.exports = {
     extend: {},
   },
   darkMode: 'class', // default : 'media'
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('tailwind-scrollbar')],
+  variants: {
+    scrollbar: ['rounded'],
+  },
 };
