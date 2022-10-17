@@ -11,6 +11,11 @@ export default function Form() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setError,
+    setValue,
+    reset,
+    resetField,
   } = useForm<LoginForm>({
     mode: 'onChange',
   });
@@ -21,6 +26,8 @@ export default function Form() {
   const onInvalid = (errors: FieldErrors) => {
     console.log(errors);
   };
+
+  console.log(watch());
 
   return (
     <form onSubmit={handleSubmit(onValid, onInvalid)} className="flex flex-col">
@@ -59,6 +66,7 @@ export default function Form() {
         type="submit"
         value="create account"
       />
+      {errors.errors?.message}
     </form>
   );
 }
