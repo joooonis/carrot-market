@@ -64,21 +64,19 @@ const Enter: NextPage = () => {
         >
           {method === 'email' ? (
             <Input
-              register={register('email')}
+              register={register('email', { required: true })}
               name="email"
               label="Email address"
               type="email"
-              required
             />
           ) : null}
           {method === 'phone' ? (
             <Input
-              register={register('phone')}
+              register={register('phone', { required: true })}
               name="phone"
               label="Phone number"
               type="number"
               kind="phone"
-              required
             />
           ) : null}
           {method === 'email' ? <Button text={'Get login link'} /> : null}
