@@ -11,6 +11,8 @@ interface EnterForm {
 }
 
 const Enter: NextPage = () => {
+  const [loading, setLoading] = useState(false);
+
   const [method, setMethod] = useState<'email' | 'phone'>('email');
   const onEmailClick = () => {
     reset();
@@ -24,9 +26,15 @@ const Enter: NextPage = () => {
   const { register, reset, handleSubmit, watch } = useForm<EnterForm>();
 
   const onValid = (data: EnterForm) => {
-    console.log(data, 'Valid');
+    setLoading(true);
+    fetch('/api/users/enter', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(() => setLoading(false));
   };
-  console.log(watch());
   return (
     <div className="mt-16 px-4">
       <h3 className="text-3xl font-bold text-center">Enter to Carrot</h3>
@@ -79,9 +87,11 @@ const Enter: NextPage = () => {
               kind="phone"
             />
           ) : null}
-          {method === 'email' ? <Button text={'Get login link'} /> : null}
+          {method === 'email' ? (
+            <Button text={loading ? 'Loding...' : 'Get login link'} />
+          ) : null}
           {method === 'phone' ? (
-            <Button text={'Get one-time password'} />
+            <Button text={loading ? 'Loding...' : 'Get one-time password'} />
           ) : null}
         </form>
 
