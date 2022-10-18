@@ -66,7 +66,6 @@ export default function Form() {
         type="submit"
         value="create account"
       />
-      {errors.errors?.message}
     </form>
   );
 }
