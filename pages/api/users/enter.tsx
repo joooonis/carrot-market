@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import client from '@libs/server/client';
 import withHandler from '@libs/server/withHandler';
 import twilio from 'twilio';
+import smtpTransport from '@libs/server/email';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { phone, email } = req.body;
@@ -31,6 +32,27 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       body: `Your login token is ${payload}.`,
     });
     console.log(message);
+  } else if (email) {
+    const mailOptions = {
+      from: process.env.MAIL_ID,
+      to: process.env.MAIL_ID,
+      subject: 'Nomad Carrot Authentication Email',
+      text: `Authentication Code : ${payload}`,
+    };
+    const result = await smtpTransport.sendMail(
+      mailOptions,
+      (error: any, responses: any) => {
+        if (error) {
+          console.log(error);
+          return null;
+        } else {
+          console.log(responses);
+          return null;
+        }
+      },
+    );
+    smtpTransport.close();
+    console.log(result);
   }
 
   res.status(200).end();
