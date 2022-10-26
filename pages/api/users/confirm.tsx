@@ -10,12 +10,10 @@ async function handler(
   res: NextApiResponse<ResponseType>,
 ) {
   const { token } = req.body;
+
   const foundToken = await client.token.findUnique({
     where: {
       payload: token,
-    },
-    include: {
-      user: true,
     },
   });
 
