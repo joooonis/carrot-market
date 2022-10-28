@@ -8,16 +8,8 @@ async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>,
 ) {
-  // 서버 입장에서는 session에 저장이 되어있는 것
-  // 아제 user를 조회합닏다.
-  const profile = await client.user.findUnique({
-    where: { id: req.session.user?.id },
-  });
-
-  res.json({
-    ok: true,
-    profile,
-  });
+  console.log(req.query);
+  res.json({ ok: true });
 }
 
 export default withApiSession(withHandler({ methods: ['GET'], handler }));

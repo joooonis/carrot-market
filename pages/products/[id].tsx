@@ -7,7 +7,9 @@ import { useRouter } from 'next/router';
 const ItemDetail: NextPage = () => {
   const router = useRouter();
 
-  const {} = useSWR(router.query.id ? `api/products/${router.query.id}` : null);
+  const { data } = useSWR(
+    router.query.id ? `/api/products/${router.query.id}` : null,
+  );
 
   return (
     <Layout canGoBack>
