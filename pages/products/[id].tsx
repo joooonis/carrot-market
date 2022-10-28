@@ -3,16 +3,22 @@ import Button from '@components/button';
 import Layout from '@components/layout';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
-import { Product } from '@prisma/client';
+import { Product, User } from '@prisma/client';
+
+interface ProductWithUser extends Product {
+  user: User;
+}
+interface ItemDetailResponse {
+  ok: boolean;
+  product: ProductWithUser;
+}
 
 const ItemDetail: NextPage = () => {
   const router = useRouter();
 
-  const { data } = useSWR(
+  const { data } = useSWR<ItemDetailResponse>(
     router.query.id ? `/api/products/${router.query.id}` : null,
   );
-
-  console.log(data);
 
   return (
     <Layout canGoBack>
