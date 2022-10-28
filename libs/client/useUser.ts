@@ -1,11 +1,16 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useSWR from 'swr';
 
 export default function useUser() {
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const router = useRouter();
+  const { data, error, mutate } = useSWR('/api/users/me');
 
-  const { data, error, mutate } = useSWR('/api/users/me', fetcher);
-  return data;
+  useEffect(() => {
+    if (data && !data.ok) {
+      // 만약 data = { ok:false } 응답을 받으면 로그인페이지로
+      router.replace('/');
+    }
+  }, [router, data]);
+  return { user: data?.profile, isLoading: !data && !error };
 }
