@@ -1,8 +1,14 @@
 import type { NextPage } from 'next';
 import Button from '@components/button';
 import Layout from '@components/layout';
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
 
 const ItemDetail: NextPage = () => {
+  const router = useRouter();
+
+  const {} = useSWR(router.query.id ? `api/products/${router.query.id}` : null);
+
   return (
     <Layout canGoBack>
       <div className="px-4  py-4">
