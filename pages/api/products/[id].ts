@@ -8,8 +8,22 @@ async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseType>,
 ) {
-  console.log(req.query);
-  res.json({ ok: true });
+  const { id } = req.query;
+  const product = await client.product.findUnique({
+    where: {
+      id: +id!.toString(),
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          avatar: true,
+        },
+      },
+    },
+  });
+  res.json({ ok: true, product });
 }
 
 export default withApiSession(withHandler({ methods: ['GET'], handler }));
