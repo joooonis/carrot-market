@@ -20,13 +20,15 @@ interface ItemDetailResponse {
 const ItemDetail: NextPage = () => {
   const router = useRouter();
 
-  const { data } = useSWR<ItemDetailResponse>(
+  const { data, mutate } = useSWR<ItemDetailResponse>(
     router.query.id ? `/api/products/${router.query.id}` : null,
   );
   const [toggleFav] = useMutation(`/api/products/${router.query.id}/fav`);
 
   const onFavClick = () => {
-    toggleFav({});
+    if (!data) return;
+    mutate({ ...data, isLiked: !data?.isLiked }, false); // 캐시한 data에 대해서 mutate를 실행합니다.
+    toggleFav({}); // 실제 요청은 여기세서 보냅니다.
   };
 
   return (
