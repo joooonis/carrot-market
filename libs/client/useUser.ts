@@ -9,7 +9,7 @@ export default function useUser() {
   useEffect(() => {
     if (data && !data.ok) {
       // 만약 data = { ok:false } 응답을 받으면 로그인페이지로
-      router.replace('/');
+      router.replace('/enter');
     }
   }, [router, data]);
   return { user: data?.profile, isLoading: !data && !error };
