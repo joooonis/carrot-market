@@ -31,7 +31,7 @@ const ItemDetail: NextPage = () => {
   const onFavClick = () => {
     if (!data) return;
     boundMutate((prev) => prev && { ...prev, isLiked: !prev.isLiked }, false); // 캐시한 data에 대해서 mutate를 실행합니다.
-    mutate('/api/users/me', (prev: any) => ({ ok: !prev.ok }), false);
+    // mutate('/api/users/me', (prev: any) => ({ ok: !prev.ok }), false);
     toggleFav({}); // 실제 요청은 여기세서 보냅니다.
   };
 
