@@ -7,6 +7,7 @@ import { Product, User } from '@prisma/client';
 import useMutation from '@libs/client/useMutation';
 import { cls } from '@libs/client/utils';
 import useUser from '@libs/client/useUser';
+import Link from 'next/link';
 
 interface ProductWithUser extends Product {
   user: User;
@@ -46,9 +47,11 @@ const ItemDetail: NextPage = () => {
               <p className="text-sm font-medium text-gray-700">
                 {data?.product?.user?.name}
               </p>
-              <p className="text-xs font-medium text-gray-500">
-                View profile &rarr;
-              </p>
+              <Link href={`/users/profiles/${data?.product?.user?.id}`}>
+                <a className="text-xs font-medium text-gray-500">
+                  View profile &rarr;
+                </a>
+              </Link>
             </div>
           </div>
           <div className="mt-5">
