@@ -41,8 +41,8 @@ const ItemDetail: NextPage = () => {
       <div className="px-4  py-4">
         <div className="mb-8">
           <div className="h-96 bg-slate-300" />
-          <div className="flex cursor-pointer py-3 border-t border-b items-center space-x-3">
-            <div className="w-12 h-12 rounded-full bg-slate-300" />
+          <div className="flex cursor-pointer items-center space-x-3 border-t border-b py-3">
+            <div className="h-12 w-12 rounded-full bg-slate-300" />
             <div>
               <p className="text-sm font-medium text-gray-700">
                 {data?.product?.user?.name}
@@ -58,7 +58,7 @@ const ItemDetail: NextPage = () => {
             <h1 className="text-3xl font-bold text-gray-900">
               {data?.product?.name}
             </h1>
-            <span className="text-2xl block mt-3 text-gray-900">
+            <span className="mt-3 block text-2xl text-gray-900">
               {data?.product?.price}
             </span>
             <p className=" my-6 text-gray-700">{data?.product?.description}</p>
@@ -67,7 +67,7 @@ const ItemDetail: NextPage = () => {
               <button
                 onClick={onFavClick}
                 className={cls(
-                  'p-3 rounded-md flex items-center justify-center hover:bg-gray-100',
+                  'flex items-center justify-center rounded-md p-3 hover:bg-gray-100',
                   data?.isLiked
                     ? 'text-red-500  hover:text-red-600'
                     : 'text-gray-400 hover:text-gray-500',
@@ -75,7 +75,7 @@ const ItemDetail: NextPage = () => {
               >
                 {data?.isLiked ? (
                   <svg
-                    className="w-6 h-6"
+                    className="h-6 w-6"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -112,8 +112,8 @@ const ItemDetail: NextPage = () => {
           <div className=" mt-6 grid grid-cols-2 gap-4">
             {data?.relatedProducts?.map((product) => (
               <div key={product.id}>
-                <div className="h-56 w-full mb-4 bg-slate-300" />
-                <h3 className="text-gray-700 -mb-1">{product.name}</h3>
+                <div className="mb-4 h-56 w-full bg-slate-300" />
+                <h3 className="-mb-1 text-gray-700">{product.name}</h3>
                 <span className="text-sm font-medium text-gray-900">
                   ${product.price}
                 </span>

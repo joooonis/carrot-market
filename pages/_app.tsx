@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         fetcher: (url: string) => fetch(url).then((res) => res.json()),
       }}
     >
-      <div className="w-full max-w-xl mx-auto">
+      <div className="mx-auto w-full max-w-xl">
         <Component {...pageProps} />
       </div>
     </SWRConfig>

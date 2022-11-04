@@ -11,6 +11,7 @@ export default function useCoords() {
     longitude: null,
   });
 
+  
   const onSuccess = ({
     coords: { latitude, longitude },
   }: GeolocationPosition) => {
