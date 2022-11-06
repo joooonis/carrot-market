@@ -27,6 +27,8 @@ async function handler(
       },
     },
   });
+
+  console.log(message);
   res.json({ ok: true, message });
 }
 

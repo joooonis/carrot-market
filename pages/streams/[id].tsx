@@ -27,10 +27,10 @@ const Stream: NextPage = () => {
 
   const { register, handleSubmit, reset } = useForm<MessageForm>();
 
-  const onValid = (fomr: MessageForm) => {
+  const onValid = (form: MessageForm) => {
     if (loading) return;
-    sendMessage(data);
     reset();
+    sendMessage(form);
   };
 
   return (
