@@ -22,11 +22,11 @@ export default function Layout({
   };
   return (
     <div>
-      <div className="bg-white w-full h-12 max-w-xl justify-center text-lg px-10 font-medium  fixed text-gray-800 border-b top-0  flex items-center">
+      <div className="fixed top-0 flex h-12 w-full max-w-xl items-center justify-center  border-b bg-white px-10 text-lg  font-medium text-gray-800">
         {canGoBack ? (
           <button onClick={onClick} className="absolute left-4">
             <svg
-              className="w-6 h-6"
+              className="h-6 w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -47,18 +47,18 @@ export default function Layout({
       </div>
       <div className={cls('pt-12', hasTabBar ? 'pb-24' : '')}>{children}</div>
       {hasTabBar ? (
-        <nav className="bg-white max-w-xl text-gray-700 border-t fixed bottom-0 w-full px-10 pb-5 pt-3 flex justify-between text-xs">
+        <nav className="fixed bottom-0 flex w-full max-w-xl justify-between border-t bg-white px-10 pb-5 pt-3 text-xs text-gray-700">
           <Link href="/">
             <a
               className={cls(
                 'flex flex-col items-center space-y-2 ',
                 router.pathname === '/'
                   ? 'text-orange-500'
-                  : 'hover:text-gray-500 transition-colors',
+                  : 'transition-colors hover:text-gray-500',
               )}
             >
               <svg
-                className="w-6 h-6"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -80,11 +80,11 @@ export default function Layout({
                 'flex flex-col items-center space-y-2 ',
                 router.pathname === '/community'
                   ? 'text-orange-500'
-                  : 'hover:text-gray-500 transition-colors',
+                  : 'transition-colors hover:text-gray-500',
               )}
             >
               <svg
-                className="w-6 h-6"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -106,11 +106,11 @@ export default function Layout({
                 'flex flex-col items-center space-y-2 ',
                 router.pathname === '/chats'
                   ? 'text-orange-500'
-                  : 'hover:text-gray-500 transition-colors',
+                  : 'transition-colors hover:text-gray-500',
               )}
             >
               <svg
-                className="w-6 h-6"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -126,17 +126,17 @@ export default function Layout({
               <span>채팅</span>
             </a>
           </Link>
-          <Link href="/live">
+          <Link href="/streams">
             <a
               className={cls(
                 'flex flex-col items-center space-y-2 ',
-                router.pathname === '/live'
+                router.pathname === '/streams'
                   ? 'text-orange-500'
-                  : 'hover:text-gray-500 transition-colors',
+                  : 'transition-colors hover:text-gray-500',
               )}
             >
               <svg
-                className="w-6 h-6"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -149,7 +149,7 @@ export default function Layout({
                   d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
                 ></path>
               </svg>
-              <span>라이브</span>
+              <span>스트림</span>
             </a>
           </Link>
           <Link href="/profile">
@@ -158,11 +158,11 @@ export default function Layout({
                 'flex flex-col items-center space-y-2 ',
                 router.pathname === '/profile'
                   ? 'text-orange-500'
-                  : 'hover:text-gray-500 transition-colors',
+                  : 'transition-colors hover:text-gray-500',
               )}
             >
               <svg
-                className="w-6 h-6"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
