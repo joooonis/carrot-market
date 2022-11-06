@@ -5,11 +5,17 @@ import Layout from '@components/layout';
 import useUser from '@libs/client/useUser';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
+import useMutation from '@libs/client/useMutation';
 
 interface EditForm {
   email: string;
   phone: string;
   formErrors: string;
+}
+
+interface EditProfileResponse {
+  ok: boolean;
+  error?: string;
 }
 
 const EditProfile: NextPage = () => {
@@ -27,12 +33,24 @@ const EditProfile: NextPage = () => {
     if (user?.phone) setValue('phone', user?.phone);
   }, [user, setValue]);
 
+  const [editProfile, { data, loading }] =
+    useMutation<EditProfileResponse>('/api/users/me');
+
   const onValid = ({ email, phone }: EditForm) => {
+    if (loading) return;
+
     if (email === '' && phone === '')
-      setError('formErrors', {
+      return setError('formErrors', {
         message: 'Email OR Phone number are required. You need to choose one.',
       });
+    editProfile({ email, phone });
   };
+
+  useEffect(() => {
+    if (data && !data.ok && data.error) {
+      setError('formErrors', { message: data.error });
+    }
+  }, [data, setError]);
 
   return (
     <Layout canGoBack title="Edit Profile">
@@ -70,7 +88,7 @@ const EditProfile: NextPage = () => {
             {errors.formErrors.message}
           </span>
         ) : null}
-        <Button text="Update profile" />
+        <Button text={loading ? 'loading...' : 'Update profile'} />
       </form>
     </Layout>
   );
