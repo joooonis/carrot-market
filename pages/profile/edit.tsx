@@ -9,21 +9,29 @@ import { useEffect } from 'react';
 interface EditForm {
   email: string;
   phone: string;
-  formError: string;
+  formErrors: string;
 }
 
 const EditProfile: NextPage = () => {
   const { user } = useUser();
-  const { register, handleSubmit, setValue, setError, formState } =
-    useForm<EditForm>();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    setError,
+    formState: { errors },
+  } = useForm<EditForm>();
 
   useEffect(() => {
     if (user?.email) setValue('email', user?.email);
     if (user?.phone) setValue('phone', user?.phone);
   }, [user, setValue]);
 
-  const onValid = (form: EditForm) => {
-    console.log(form);
+  const onValid = ({ email, phone }: EditForm) => {
+    if (email === '' && phone === '')
+      setError('formErrors', {
+        message: 'Email OR Phone number are required. You need to choose one.',
+      });
   };
 
   return (
@@ -57,6 +65,11 @@ const EditProfile: NextPage = () => {
           type="number"
           kind="phone"
         />
+        {errors.formErrors ? (
+          <span className="my-2 block text-red-500">
+            {errors.formErrors.message}
+          </span>
+        ) : null}
         <Button text="Update profile" />
       </form>
     </Layout>
