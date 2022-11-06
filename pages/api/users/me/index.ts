@@ -9,15 +9,90 @@ async function handler(
   res: NextApiResponse<ResponseType>,
 ) {
   // 서버 입장에서는 session에 저장이 되어있는 것
-  // 아제 user를 조회합닏다.
-  const profile = await client.user.findUnique({
-    where: { id: req.session.user?.id },
-  });
+  // 여기서 user를 조회합니다.
 
-  res.json({
-    ok: true,
-    profile,
-  });
+  if (req.method === 'GET') {
+    const profile = await client.user.findUnique({
+      where: { id: req.session.user?.id },
+    });
+
+    res.json({
+      ok: true,
+      profile,
+    });
+  }
+
+  if (req.method === 'POST') {
+    const {
+      session: { user },
+      body: { email, phone },
+    } = req;
+
+    const currentUser = await client.user.findUnique({
+      where: {
+        id: user?.id,
+      },
+    });
+
+    if (email && email !== currentUser?.email) {
+      const alreadyExist = Boolean(
+        await client.user.findUnique({
+          where: {
+            email,
+          },
+          select: {
+            id: true,
+          },
+        }),
+      );
+      if (alreadyExist) {
+        return res.json({
+          ok: false,
+          error: 'email already exist.',
+        });
+      }
+      await client.user.update({
+        where: {
+          id: user?.id,
+        },
+        data: { email },
+      });
+      res.json({
+        ok: true,
+      });
+    }
+
+    if (phone && phone !== currentUser?.phone) {
+      const alreadyExist = Boolean(
+        await client.user.findUnique({
+          where: {
+            phone,
+          },
+          select: {
+            id: true,
+          },
+        }),
+      );
+      if (alreadyExist) {
+        return res.json({
+          ok: false,
+          error: 'phone already exist.',
+        });
+      }
+      await client.user.update({
+        where: {
+          id: user?.id,
+        },
+        data: { phone },
+      });
+    }
+
+    res.json({
+      ok: true,
+    });
+  }
 }
 
-export default withApiSession(withHandler({ methods: ['GET'], handler }));
+export default withApiSession(
+  withHandler({ methods: ['GET', 'POST'], handler }),
+);
