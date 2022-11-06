@@ -27,7 +27,7 @@ const Create: NextPage = () => {
 
   const onValid = (form: CreateFrom) => {
     if (loading) return;
-    console.log(form);
+    createStream(form);
   };
 
   const router = useRouter();
@@ -41,13 +41,13 @@ const Create: NextPage = () => {
     <Layout canGoBack title="Go Stream">
       <form onSubmit={handleSubmit(onValid)} className=" space-y-4 py-10 px-4">
         <Input
-          register={register('name')}
+          register={register('name', { required: true })}
           label="Name"
           name="name"
           type="text"
         />
         <Input
-          register={register('price')}
+          register={register('price', { required: true, valueAsNumber: true })}
           label="Price"
           placeholder="0.00"
           name="price"
@@ -55,11 +55,11 @@ const Create: NextPage = () => {
           kind="price"
         />
         <TextArea
-          register={register('description')}
+          register={register('description', { required: true })}
           name="description"
           label="Description"
         />
-        <Button text="Go stream" />
+        <Button text={loading ? 'Loading...' : 'Go Stream'} />
       </form>
     </Layout>
   );
