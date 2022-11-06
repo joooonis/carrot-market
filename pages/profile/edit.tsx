@@ -25,6 +25,7 @@ const EditProfile: NextPage = () => {
     handleSubmit,
     setValue,
     setError,
+    clearErrors,
     formState: { errors },
   } = useForm<EditForm>();
 
@@ -88,7 +89,10 @@ const EditProfile: NextPage = () => {
             {errors.formErrors.message}
           </span>
         ) : null}
-        <Button text={loading ? 'loading...' : 'Update profile'} />
+        <Button
+          onClick={() => clearErrors()}
+          text={loading ? 'loading...' : 'Update profile'}
+        />
       </form>
     </Layout>
   );
