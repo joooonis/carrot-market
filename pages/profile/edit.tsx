@@ -8,8 +8,9 @@ import { useEffect } from 'react';
 import useMutation from '@libs/client/useMutation';
 
 interface EditForm {
-  email: string;
-  phone: string;
+  email?: string;
+  phone?: string;
+  name?: string;
   formErrors: string;
 }
 
@@ -32,19 +33,20 @@ const EditProfile: NextPage = () => {
   useEffect(() => {
     if (user?.email) setValue('email', user?.email);
     if (user?.phone) setValue('phone', user?.phone);
+    if (user?.name) setValue('name', user?.name);
   }, [user, setValue]);
 
   const [editProfile, { data, loading }] =
     useMutation<EditProfileResponse>('/api/users/me');
 
-  const onValid = ({ email, phone }: EditForm) => {
+  const onValid = ({ email, phone, name }: EditForm) => {
     if (loading) return;
 
-    if (email === '' && phone === '')
+    if (email === '' && phone === '' && name === '')
       return setError('formErrors', {
         message: 'Email OR Phone number are required. You need to choose one.',
       });
-    editProfile({ email, phone });
+    editProfile({ email, phone, name });
   };
 
   useEffect(() => {
@@ -71,6 +73,12 @@ const EditProfile: NextPage = () => {
             />
           </label>
         </div>
+        <Input
+          register={register('name')}
+          label="Name"
+          name="name"
+          type="text"
+        />
         <Input
           register={register('email')}
           label="Email address"
