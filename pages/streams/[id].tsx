@@ -7,6 +7,7 @@ import { Stream } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import useMutation from '@libs/client/useMutation';
 import useUser from '@libs/client/useUser';
+import { useEffect } from 'react';
 
 interface MessageForm {
   message: string;
@@ -47,6 +48,10 @@ const Streams: NextPage = () => {
     reset();
     sendMessage(form);
   };
+
+  useEffect(() => {
+    if (sendMessageData && sendMessageData.ok) mutate();
+  }, [sendMessageData, mutate]);
 
   return (
     <Layout canGoBack>
