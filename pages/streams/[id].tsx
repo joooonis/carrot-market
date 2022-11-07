@@ -36,7 +36,7 @@ const Streams: NextPage = () => {
   const router = useRouter();
   const { data, mutate } = useSWR<StreamResponse>(
     router.query.id ? `/api/streams/${router.query.id}` : null,
-    { refreshInterval: 1000 },
+    { refreshInterval: 3000 },
   );
 
   const [sendMessage, { data: sendMessageData, loading }] = useMutation(
@@ -87,7 +87,7 @@ const Streams: NextPage = () => {
         </div>
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Live Chat</h2>
-          <div className="h-[50vh] space-y-4 overflow-y-scroll py-10  px-4 pb-16">
+          <div className="h-[50vh] space-y-4 overflow-y-scroll py-10 px-4 pb-16 scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-slate-500  scrollbar-track-rounded-full scrollbar-thumb-rounded-full">
             {data?.stream?.messages.map((message) => (
               <Message
                 key={message.id}
