@@ -26,12 +26,11 @@ const Stream: NextPage = () => {
   const streams = data ? data.map((item) => item.streams).flat() : [];
   const page = useInfiniteScroll();
 
-  console.log(streams);
-
   useEffect(() => {
-    console.log(page);
     setSize(page);
   }, [setSize, page]);
+
+  console.log(data);
 
   return (
     <Layout hasTabBar title="스트림">
