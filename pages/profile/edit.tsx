@@ -51,13 +51,32 @@ const EditProfile: NextPage = () => {
   const [editProfile, { data, loading }] =
     useMutation<EditProfileResponse>('/api/users/me');
 
-  const onValid = ({ email, phone, name }: EditForm) => {
+  const onValid = async ({ email, phone, name, avatar }: EditForm) => {
     if (loading) return;
-
     if (email === '' && phone === '' && name === '')
       return setError('formErrors', {
         message: 'Email OR Phone number are required. You need to choose one.',
       });
+
+    if (avatar && avatar.length > 0) {
+      const cloudflareRequest = await (await fetch(`/api/files`)).json();
+      console.log(cloudflareRequest);
+      // upload file to CF URL
+      return;
+      editProfile({
+        email,
+        phone,
+        name,
+        // avatarUrl: CF URL
+      });
+    } else {
+      editProfile({
+        email,
+        phone,
+        name,
+      });
+    }
+
     editProfile({ email, phone, name });
   };
 
