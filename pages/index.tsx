@@ -6,6 +6,8 @@ import useUser from '@libs/client/useUser';
 import Head from 'next/head';
 import useSWR from 'swr';
 import { Product } from '@prisma/client';
+import jjangu from '../public/jjangu.jpg';
+import Image from 'next/image';
 
 interface ProductsResponse {
   ok: boolean;
@@ -56,6 +58,7 @@ const Home: NextPage = () => {
           </svg>
         </FloatingButton>
       </div>
+      <Image src={jjangu} placeholder="blur" />
     </Layout>
   );
 };
