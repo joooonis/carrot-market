@@ -64,6 +64,7 @@ const EditProfile: NextPage = () => {
 
     if (avatar && avatar.length > 0 && user) {
       const { uploadURL } = await (await fetch(`/api/files`)).json();
+
       const form = new FormData();
       form.append('file', avatar[0], user.id + '');
       const {
