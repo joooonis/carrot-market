@@ -28,9 +28,31 @@ const Upload: NextPage = () => {
 
   const [uploadProduct, { loading, data }] =
     useMutation<UploadProductMutation>('/api/products');
-  const onValid = (data: UploadProductForm) => {
+  const onValid = async ({
+    name,
+    price,
+    image,
+    description,
+  }: UploadProductForm) => {
     if (loading) return;
-    uploadProduct(data);
+
+    if (image && image.length > 0) {
+      const { uploadURL } = await (await fetch(`/api/files`)).json();
+      const form = new FormData();
+      form.append('file', image[0]);
+
+      const {
+        result: { id },
+      } = await (
+        await fetch(uploadURL, {
+          method: 'POST',
+          body: form,
+        })
+      ).json();
+      uploadProduct({ name, price, description, image: id });
+    }
+
+    uploadProduct({ name, price, description });
   };
 
   const router = useRouter();
@@ -53,7 +75,7 @@ const Upload: NextPage = () => {
     <Layout canGoBack title="Upload Product">
       <form className="space-y-4 p-4" onSubmit={handleSubmit(onValid)}>
         <div>
-          <label className="relative flex w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-gray-300 pb-80 text-gray-600 hover:border-orange-500 hover:text-orange-500">
+          <label className="relative flex h-80 w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-gray-300 text-gray-600 hover:border-orange-500 hover:text-orange-500">
             {imagePreview ? (
               <Image
                 src={imagePreview}
