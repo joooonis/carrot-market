@@ -44,7 +44,7 @@ const ItemDetail: NextPage = () => {
           <div className="relative pb-80">
             <Image
               src={`https://imagedelivery.net/M9q4wVMn9ZCCxsqKW1CbSw/${data?.product?.image}/public`}
-              className="object-cover"
+              className="object-scale-down"
               layout="fill"
             />
           </div>

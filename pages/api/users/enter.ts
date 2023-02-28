@@ -4,7 +4,7 @@ import withHandler from '@libs/server/withHandler';
 import twilio from 'twilio';
 import smtpTransport from '@libs/server/email';
 
-const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
+// const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { phone, email } = req.body;
@@ -57,6 +57,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   return res.json({
     ok: true,
+    token: token,
   });
 }
 
